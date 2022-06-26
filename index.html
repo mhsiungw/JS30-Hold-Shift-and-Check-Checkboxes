@@ -105,6 +105,13 @@
 				}
 			});
 
+			window.addEventListener('keyup', ({ key }) => {
+				if (key === 'Shift') {
+					isShiftKeyPressed = false;
+					indexArr = [];
+				}
+			});
+
 			inputEls.forEach((inputEl, index) =>
 				inputEl.addEventListener('click', () => handleShiftClick(index))
 			);
@@ -121,11 +128,11 @@
 						return;
 					}
 
-					inputEls
+					if(indexArr.length === 1){
+						inputEls
 						.slice(indexArr[0])
 						.forEach((checkbox) => (checkbox.checked = true));
-
-					isShiftKeyPressed = false;
+					}
 				}
 			}
 		</script>
